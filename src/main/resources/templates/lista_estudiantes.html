@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<!-- src/main/resources/templates/lista_estudiantes.html -->
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Estudiantes</title>
+</head>
+<body>
+    <h1>Lista de Estudiantes</h1>
+
+    <a th:href="@{/estudiantes/nuevo}">insertar</a>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombres</th>
+                <th>Apellidos</th>
+                <th>Cédula</th>
+                <th>Edad</th>
+                <th>Celular</th>
+                <th>Fecha de Nacimiento</th>
+                <th>Eliminar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="estudiante : ${estudiantes}">
+                <td th:text="${estudiante.id_Estudiante}"></td>
+                <td th:text="${estudiante.nombres}"></td>
+                <td th:text="${estudiante.apellidos}"></td>
+                <td th:text="${estudiante.cedula}"></td>
+                <td th:text="${estudiante.edad}"></td>
+                <td th:text="${estudiante.celular}"></td>
+                <td th:text="${#dates.format(estudiante.fecha_nac, 'yyyy-MM-dd')}"></td>
+                <td><a th:href="@{'/estudiantes/eliminar/' + ${estudiante.id_Estudiante}}">Eliminar</a></td>
+            </tr>
+        </tbody>
+    </table>
+
+    
+</body>
+</html>
+
